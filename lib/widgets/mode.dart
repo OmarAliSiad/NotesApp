@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 class Mode extends StatelessWidget {
-  const Mode({
+  final IconData icon;
+   Mode({
     super.key,
-    required this.valueNotifier,
-    required this.mode,
+     this.valueNotifier,
+     this.mode, required this.icon,
   });
-  final ThemeMode mode;
-  final ValueNotifier<ThemeMode> valueNotifier;
+   ThemeMode ?mode;
+   ValueNotifier<ThemeMode>? valueNotifier;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          valueNotifier.value =
+          valueNotifier!.value =
               (mode == ThemeMode.light) ? ThemeMode.dark : ThemeMode.light;
         },
         child: Padding(
@@ -24,7 +25,7 @@ class Mode extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 color: Colors.grey.withOpacity(.6)),
             child: Icon(
-              Icons.dark_mode,
+              icon,
               color: (ThemeMode.light == mode) ? Colors.black : Colors.white,
             ),
           ),
