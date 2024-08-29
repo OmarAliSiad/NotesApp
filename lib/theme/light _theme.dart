@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData LightTheme(ThemeMode mode) {
   return ThemeData(
-    scaffoldBackgroundColor: Colors.grey.shade500,
+    scaffoldBackgroundColor: Colors.grey.shade300,
     appBarTheme: AppBarTheme(
         titleTextStyle: TextStyle(
             fontSize: 27,
