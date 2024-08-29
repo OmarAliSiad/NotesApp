@@ -10,7 +10,7 @@ ThemeData DarkTheme(ThemeMode mode) {
     textTheme: TextTheme(
       bodyLarge: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 24,
+          fontSize: 28,
           color: (ThemeMode.light == mode) ? Colors.black : Colors.white),
       bodyMedium: TextStyle(
           fontSize: 20,
