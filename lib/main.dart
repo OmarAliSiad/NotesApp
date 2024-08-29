@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:notesapp/widgets/light_and_dark_mode.dart';
+import 'package:notesapp/theme/dark_theme.dart';
+import 'package:notesapp/theme/light%20_theme.dart';
+import 'package:notesapp/views/edit_note_view.dart';
+import 'package:notesapp/views/home_page.dart';
+import 'package:notesapp/widgets/custom_note_item.dart';
+import 'package:notesapp/widgets/mode.dart';
 
 void main() {
   runApp(NotesApp());
@@ -14,31 +19,16 @@ class NotesApp extends StatelessWidget {
         valueListenable: valueNotifier,
         builder: (context, mode, widget) {
           return MaterialApp(
-            themeMode: mode,
-            theme: ThemeData(
-              appBarTheme: const AppBarTheme(
-                  titleTextStyle: TextStyle(fontSize: 28, color: Colors.black)),
-              brightness: Brightness.light,
-              textTheme: const TextTheme(
-                bodyLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                bodyMedium:
-                    TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                bodySmall: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-            ),
-            darkTheme: ThemeData.dark(),
-            debugShowCheckedModeBanner: false,
-            home: Scaffold(
-              appBar: AppBar(
-                title: const Text(
-                  'Notes',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
-              body:
-                  Center(child: Mode(valueNotifier: valueNotifier, mode: mode)),
-            ),
-          );
+              routes: {
+                EditNoteView.id: (context) => const EditNoteView(),
+              },
+              themeMode: mode,
+              theme: LightTheme(mode),
+              darkTheme: DarkTheme(mode),
+              debugShowCheckedModeBanner: false,
+              home: HomePage(
+                valueNotifier: valueNotifier,
+              ));
         });
   }
 }
