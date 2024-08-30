@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:notesapp/costants/costants.dart';
 import 'package:notesapp/theme/dark_theme.dart';
 import 'package:notesapp/theme/light%20_theme.dart';
 import 'package:notesapp/views/edit_note_view.dart';
 import 'package:notesapp/views/home_page.dart';
-import 'package:notesapp/widgets/custom_note_item.dart';
-import 'package:notesapp/widgets/mode.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox(kbox);
   runApp(NotesApp());
 }
 
