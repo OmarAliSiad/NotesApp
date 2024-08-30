@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:notesapp/widgets/custom_app_bar.dart';
 import 'package:notesapp/widgets/custom_text_field.dart';
 
-class EditNoteViewBody extends StatelessWidget {
+class EditNoteViewBody extends StatefulWidget {
+  const EditNoteViewBody({super.key});
+
+  @override
+  State<EditNoteViewBody> createState() => _EditNoteViewBodyState();
+}
+
+class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   ValueNotifier<ThemeMode> valueNotifier = ValueNotifier(ThemeMode.dark);
   ThemeMode mode = ThemeMode.dark;
-  EditNoteViewBody({super.key});
-
+  String? title, subtitle;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,6 +29,9 @@ class EditNoteViewBody extends StatelessWidget {
           child: Column(
             children: [
               CustomTextField(
+                onSaved: (value) {
+                  title = value;
+                },
                 hint_color: Colors.grey,
                 mode: mode,
                 maxLines: 1,
@@ -33,6 +42,9 @@ class EditNoteViewBody extends StatelessWidget {
                 height: 15,
               ),
               CustomTextField(
+                onSaved: (value) {
+                  subtitle = value;
+                },
                 hint_color: Colors.grey,
                 mode: mode,
                 maxLines: 5,
