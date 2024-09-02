@@ -6,6 +6,7 @@ import 'package:notesapp/cubits/note_cubit/note_cubit.dart';
 import 'package:notesapp/model/note_model.dart';
 import 'package:notesapp/widgets/custom_button.dart';
 import 'package:notesapp/widgets/custom_text_field.dart';
+import 'package:notesapp/widgets/list_view_colors%20_item.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -17,7 +18,6 @@ class AddNoteForm extends StatefulWidget {
 }
 
 class _AddNoteFormState extends State<AddNoteForm> {
-
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   String? title;
   String? subtitle;
@@ -53,6 +53,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const SizedBox(
             height: 50,
           ),
+          const ColorListView(),
+          const SizedBox(
+            height: 15,
+          ),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
@@ -70,7 +74,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                         color: Colors.blue.value);
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                     BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                  } 
+                  }
                 },
               );
             },
