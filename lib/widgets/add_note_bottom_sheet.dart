@@ -9,36 +9,32 @@ class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddNoteCubit(),
-      child: BlocConsumer<AddNoteCubit, AddNoteState>(
-        listener: (context, state) {
-          if (state is AddNoteSuccess) {
-            Navigator.pop(context);
-            print('added\n');
-          } else if (state is AddNoteFaiulre) {
-            print('${state.errorMessage}\n');
-          }
-        },
-        builder: (context, state) {
-          return BlocBuilder<AddNoteCubit, AddNoteState>(
-            builder: (context, state) {
-              return AbsorbPointer(
-                absorbing: state is AddNoteLoading ? true : false,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      right: 16.0,
-                      left: 16,
-                      bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: const SingleChildScrollView(
-                    child: AddNoteForm(),
-                  ),
+    return BlocConsumer<AddNoteCubit, AddNoteState>(
+      listener: (context, state) {
+        if (state is AddNoteSuccess) {
+          Navigator.pop(context);
+        } else if (state is AddNoteFaiulre) {
+          print('${state.errorMessage}\n');
+        }
+      },
+      builder: (context, state) {
+        return BlocBuilder<AddNoteCubit, AddNoteState>(
+          builder: (context, state) {
+            return AbsorbPointer(
+              absorbing: state is AddNoteLoading ? true : false,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    right: 16.0,
+                    left: 16,
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: const SingleChildScrollView(
+                  child: AddNoteForm(),
                 ),
-              );
-            },
-          );
-        },
-      ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }
