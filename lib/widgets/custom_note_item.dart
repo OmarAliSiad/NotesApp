@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notesapp/cubits/note_cubit/note_cubit.dart';
 import 'package:notesapp/model/note_model.dart';
+import 'package:notesapp/theme/dark_theme.dart';
 import 'package:notesapp/views/edit_note_view.dart';
 
 class CustomNoteItem extends StatelessWidget {
@@ -13,7 +14,12 @@ class CustomNoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, EditNoteView.id);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => EditNoteView(
+                      noteModel: note,
+                    )));
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -27,17 +33,19 @@ class CustomNoteItem extends StatelessWidget {
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               title: Padding(
-                padding: const EdgeInsets.only(bottom: 20),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   note.title,
                   style: TextStyle(
-                      fontSize: 28, color: Colors.black.withOpacity(.9)),
+                      fontSize: darkTheme().textTheme.bodyLarge!.fontSize,
+                      color: Colors.black.withOpacity(.9)),
                 ),
               ),
               subtitle: Text(
                 note.description,
                 style: TextStyle(
-                    fontSize: 20, color: Colors.black.withOpacity(.5)),
+                    fontSize: darkTheme().textTheme.bodyMedium!.fontSize,
+                    color: Colors.grey),
               ),
               trailing: IconButton(
                 onPressed: () {
@@ -54,11 +62,10 @@ class CustomNoteItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 12, bottom: 10, top: 10),
               child: Text(
-                note.date,
+                note.date!,
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Colors.black.withOpacity(.5)),
+                    fontSize: darkTheme().textTheme.bodySmall!.fontSize,
+                    color: Colors.black.withOpacity(.8)),
               ),
             ),
           ],
