@@ -4,7 +4,7 @@ ThemeData DarkTheme(ThemeMode mode) {
   return ThemeData(
     appBarTheme: AppBarTheme(
         titleTextStyle: TextStyle(
-            fontSize: 27,
+            fontSize: 30,
             color: (ThemeMode.light == mode) ? Colors.black : Colors.white)),
     brightness: Brightness.dark,
     textTheme: TextTheme(
