@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:notesapp/theme/dark_theme.dart';
 import 'package:notesapp/widgets/mode.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final IconData icon;
 
-  CustomAppBar({
+  const CustomAppBar({
     super.key,
-    required this.valueNotifier,
-    this.mode,
     required this.title,
     required this.icon,
   });
-
-  final ValueNotifier<ThemeMode> valueNotifier;
-  ThemeMode? mode;
-
   @override
   Widget build(BuildContext context) {
+    ThemeMode mode = ThemeMode.light;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: AppBar(
+        titleTextStyle: TextStyle(
+            fontSize: DarkTheme(mode).appBarTheme.titleTextStyle!.fontSize),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         title: Text(
           title,
         ),
-        actions: [Mode(icon: icon, valueNotifier: valueNotifier, mode: mode)],
+        actions: [Mode(icon: icon)],
       ),
     );
   }
