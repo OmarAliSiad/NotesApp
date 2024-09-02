@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
 
-ThemeData DarkTheme(ThemeMode mode) {
+ThemeData darkTheme() {
   return ThemeData(
-    appBarTheme: AppBarTheme(
-        titleTextStyle: TextStyle(
-            fontSize: 30,
-            color: (ThemeMode.light == mode) ? Colors.black : Colors.white)),
+    appBarTheme: const AppBarTheme(
+        titleTextStyle: TextStyle(fontSize: 30, color: Colors.white)),
     brightness: Brightness.dark,
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       bodyLarge: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 28,
-          color: (ThemeMode.light == mode) ? Colors.black : Colors.white),
+          fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
       bodyMedium: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: (ThemeMode.light == mode) ? Colors.black : Colors.white),
+          fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
       bodySmall: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: (ThemeMode.light == mode) ? Colors.black : Colors.white),
+          fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
     ),
+    fontFamily: 'Roboto',
   );
 }
