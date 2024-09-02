@@ -22,12 +22,12 @@ class NotesApp extends StatelessWidget {
   const NotesApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => NotesCubit()),
+        BlocProvider(create: (context) => AddNoteCubit()),
+      ],
       child: MaterialApp(
-          routes: {
-            EditNoteView.id: (context) => const EditNoteView(),
-          },
           theme: ThemeData(
             brightness: Brightness.dark,
             fontFamily: 'Roboto',
