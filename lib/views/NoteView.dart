@@ -8,7 +8,6 @@ class NoteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: const CustomAppBar(
         title: 'Notes',
         icon: Icons.search,
