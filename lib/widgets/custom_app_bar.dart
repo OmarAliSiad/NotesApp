@@ -13,16 +13,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
   @override
   Widget build(BuildContext context) {
-    ThemeMode mode = ThemeMode.light;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: AppBar(
-        titleTextStyle: TextStyle(
-            fontSize: DarkTheme(mode).appBarTheme.titleTextStyle!.fontSize),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         title: Text(
           title,
+          style: TextStyle(
+              fontSize: darkTheme().appBarTheme.titleTextStyle!.fontSize),
         ),
         actions: [Mode(icon: icon)],
       ),
