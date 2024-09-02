@@ -15,7 +15,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const CustomAppBar(title: 'Edits Note', icon: Icons.check),
+        CustomAppBar(title: 'Edits Note', icon: Icons.check),
         const SizedBox(
           height: 20,
         ),
