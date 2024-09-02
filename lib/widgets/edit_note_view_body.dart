@@ -10,17 +10,12 @@ class EditNoteViewBody extends StatefulWidget {
 }
 
 class _EditNoteViewBodyState extends State<EditNoteViewBody> {
-  ValueNotifier<ThemeMode> valueNotifier = ValueNotifier(ThemeMode.dark);
-  ThemeMode mode = ThemeMode.dark;
   String? title, subtitle;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomAppBar(
-            valueNotifier: valueNotifier,
-            title: 'Edits Note',
-            icon: Icons.check),
+        const CustomAppBar(title: 'Edits Note', icon: Icons.check),
         const SizedBox(
           height: 20,
         ),
@@ -33,9 +28,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                   title = value;
                 },
                 hint_color: Colors.grey,
-                mode: mode,
                 maxLines: 1,
-                valueNotifier: valueNotifier,
                 hintText: 'Title',
               ),
               const SizedBox(
@@ -46,9 +39,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                   subtitle = value;
                 },
                 hint_color: Colors.grey,
-                mode: mode,
                 maxLines: 5,
-                valueNotifier: valueNotifier,
                 hintText: 'Content',
               ),
             ],
