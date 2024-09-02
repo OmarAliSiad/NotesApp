@@ -15,23 +15,19 @@ class NotesListView extends StatefulWidget {
 }
 
 class _NotesListViewState extends State<NotesListView> {
-  late List<NoteModel> notes;
-  @override
-  void initState() {
-    notes = BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubit, NoteState>(
       builder: (context, state) {
         return ListView.builder(
-          itemCount: notes.length,
+          itemCount:
+              BlocProvider.of<NotesCubit>(context).fetchAllNotes().length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: CustomNoteItem(note: notes[index]),
+              child: CustomNoteItem(
+                  note: BlocProvider.of<NotesCubit>(context)
+                      .fetchAllNotes()[index]),
             );
           },
         );
