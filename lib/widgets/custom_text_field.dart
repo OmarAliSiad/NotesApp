@@ -5,13 +5,14 @@ class CustomTextField extends StatefulWidget {
   final int maxLines;
   final Color hint_color;
   final void Function(String?)? onSaved;
+  final void Function(String)? onChanged;
 
   const CustomTextField(
       {super.key,
       required this.hintText,
       this.maxLines = 1,
       required this.hint_color,
-      required this.onSaved});
+       this.onSaved, this.onChanged});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -23,6 +24,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: widget.onChanged,
       onSaved: widget.onSaved,
       validator: (value) {
         if (value?.isEmpty ?? true) {
